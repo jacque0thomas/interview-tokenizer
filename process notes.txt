@@ -1,0 +1,21 @@
+So, the first thing I considered for this exercise is the bird's eye view 
+of implementing.
+
+I started abstracting it in my head, then I took a moment.
+
+How about I start in on the command line interface, then create my stubs?
+
+As I started re-acquinting myself with the Python CLI, I remembered that this 
+project will definitely be including libraries, so I took a moment to see if 
+there were any tokenizing libriaries that would be of help.
+
+From that, I refreshed myself with nltk and tokenizers. nltk would certainly 
+have a tokenizer for creating an array, which would be nice. tokenizers could
+be useful, but honestly? I could get enough out of just reading the file.
+
+So, I decided to just dive right in and create some of this from scratch. 
+It seems to make the most sense, because I wasn't finding anything that would 
+be a good enough shortcut to justify forcing someone to install a new library.
+
+_____
+
