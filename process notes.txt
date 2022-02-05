@@ -41,3 +41,28 @@ written code as the verbose option. Or maybe I'll scrap it entirely. Undecided.
 
 _____
 
+
+Hi Tom,
+
+I've wrapped up the coding excercise. Sorry it took so long, I think I was 
+definitely overthinking it, thinking about whether you wanted this as an
+example of how I can make this user-friendly or how I could make this fit the 
+specs closely. I know that in the real world, I would have had the opportunity
+to ask you/my customer questions about this program's use case, and what 
+knowledge level I could have expected, to make it run the most smoothly for 
+the user.
+
+So, without further ado, I'll list my assumptions:
+1. As this is a part of evaluating a person's technical knowledge, this program 
+    will be read and used by developer professionals or at least people familar
+    with python programs. I can trust that they have encountered command line 
+    arguments before. I can trust they have read the specs. I can trust that 
+    they have Python and likely some common libraries already installed.
+2. Although these users would know how, it is preferential to not ask them 
+    to install any new libraries, like nltk or tokenizers. More popular
+    libraries are probably already installed, but should be noted just in case.
+3. Speaking of, the required libraries for this project are: KJSFDNLKDSLKFLSKJDFLKJFLKDSJFLDS
+4. The arguments are: LKJSDLKJDSLKDJLSKDJSLKDJSLKDJDSLKJDLKJSDLKSJDLKSDJLSKDJSLD
+    If you need help, you can use the -h flag, and argparse will help you.
+5. Error catching means that detailed output is preferential. The library argparse
+    already comes with some error catching.

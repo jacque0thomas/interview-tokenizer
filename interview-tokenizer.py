@@ -6,7 +6,7 @@ Outputs:    Summary information*; alphabetic dictionary file*
 *See original specs for more detail
 '''
 
-import io
+import io, argparse
 
 
 
@@ -41,4 +41,8 @@ def main():
   
 
 if __name__=="__main__":
+    # retreive arguments
+    # determine if verbose
+    # determine if filename is legitimate
+    # determine if file is empty
     main()
