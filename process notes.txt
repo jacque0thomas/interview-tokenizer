@@ -1,3 +1,17 @@
+ASSUMPTIONS:
+1. "When someone runs the program, get the name of a file."
+    This does not specify if the file will be taken from an argument or 
+    from the command line over the runtime. In the interest of making this
+    user-friendly, the user does not have to provide the file name as as 
+    argument. The CLI will ask for it as CLI input. 
+2. It is preferential to not make the user install libraries. 
+3. "Nice" dictionary output is readable and useful. In pursuit of this,
+    this program will give the user the option to output this to a file.
+    The
+4. In reviewing the specs provided, I'm lea
+
+______
+
 So, the first thing I considered for this exercise is the bird's eye view 
 of implementing.
 
@@ -16,6 +30,14 @@ be useful, but honestly? I could get enough out of just reading the file.
 So, I decided to just dive right in and create some of this from scratch. 
 It seems to make the most sense, because I wasn't finding anything that would 
 be a good enough shortcut to justify forcing someone to install a new library.
+
+_____
+
+
+In reviewing the specs provided, I'm lead to believe that this was perhaps 
+intended to be a program run with only the output specified, and the arugments
+to the program should reflect that. In that case, I'll perhaps re-purpose my 
+written code as the verbose option. Or maybe I'll scrap it entirely. Undecided.
 
 _____
 
