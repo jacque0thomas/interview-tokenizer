@@ -53,16 +53,32 @@ knowledge level I could have expected, to make it run the most smoothly for
 the user.
 
 So, without further ado, I'll list my assumptions:
+//CODING CHOICES
+//FOR THE USER/TESTER
 1. As this is a part of evaluating a person's technical knowledge, this program 
     will be read and used by developer professionals or at least people familar
     with python programs. I can trust that they have encountered command line 
     arguments before. I can trust they have read the specs. I can trust that 
-    they have Python and likely some common libraries already installed.
+    they have Python and likely some common libraries already installed. 
+2. I can assume that this program will not be used for more than this 
+    evaulation, so I am not optimizing for speed or for things created to be 
+    re-used, beyond implementing some best practices.
+
 2. Although these users would know how, it is preferential to not ask them 
     to install any new libraries, like nltk or tokenizers. More popular
     libraries are probably already installed, but should be noted just in case.
-3. Speaking of, the required libraries for this project are: KJSFDNLKDSLKFLSKJDFLKJFLKDSJFLDS
-4. The arguments are: LKJSDLKJDSLKDJLSKDJSLKDJSLKDJDSLKJDLKJSDLKSJDLKSDJLSKDJSLD
+3. Speaking of, the required libraries for this project are: os, argparse
+    Both are in the Python Standard Library.
+4. The command line only has one argument: a 
     If you need help, you can use the -h flag, and argparse will help you.
-5. Error catching means that detailed output is preferential. The library argparse
-    already comes with some error catching.
+5. Error catching means that useful output is preferential. 
+6. "Words" are assumed to be anything alphanumeric between whitespace. A few 
+    symbols are removed from the beginning and ending. Since this is just an 
+    excerise, and we're not retrieving data from a scraper, this cleaning is 
+    somewhat rudimentary.
+7. "Words" are assumed to be the same regardless of capitalization and are 
+    all converted to lowercase for sorting.
+8. As this is an exercise, speed optimization probably isn't necessary.
+9. There's really no point in creating a sorted dictionary, and python 
+    doesn't support it. I sorted the list of words instead, and calculated
+    their output as 
