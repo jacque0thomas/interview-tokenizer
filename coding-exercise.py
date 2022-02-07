@@ -8,8 +8,13 @@ Outputs:    Summary information*; alphabetic dictionary*
 
 import os, argparse
 
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# GLOBALS
+
 # list of common non-alpha characters
 NONALPHA = "1234567890!@#$%^&*()-_=+\\\'\"[]\{\};:,./<>?`~"
+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # COMMAND LINE FUNCTIONS
@@ -22,13 +27,11 @@ def parse_arguments():
     # file is required 
     parser.add_argument(dest='filename', type=str, help="Name of the file to parse and summarize")
 
-    # to help less technical users
-    parser.add_argument('-v', default=False, action="store_true", required=False, help="Verbose. Provides additional output as the program executes.")
-    
     # retreive arguments
     args = parser.parse_args()
     
-    return args.filename, args.v
+    return args.filename
+
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ASSERT FUNCTIONS
@@ -47,6 +50,7 @@ def assert_words(word_count, filename):
         print("Please use a text file that contains words.")
         quit()
         
+        
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # OUTPUT FUNCTIONS
 
@@ -57,6 +61,14 @@ def print_psuedo_len_dict(sorted_list):
     for item in sorted_list:
         print("\t" + item + ": " + str(len(item)))
     print("}")
+    
+# In the case that the "length" requested in the output dictionay is frequency,
+# this function will output the frequency dictionary 
+def print_dictionary(sorted_list, word_freq):
+    print("{")
+    for item in sorted_list:
+        print("\t" + item + ": " + word_freq[item])
+    print("}")
 
 # Prints summary statistics according to specs
 def print_summary(word_count, uniq_word_count, third_frequent):
@@ -66,7 +78,7 @@ def print_summary(word_count, uniq_word_count, third_frequent):
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# ASSEMBLES 
+# ENGINES 
 
 # reads the file, creates stats, outputs stats
 def assemble_file_stats(filename):
@@ -98,7 +110,9 @@ def assemble_file_stats(filename):
     sorted_words_by_freq = sorted(word_freq.items(), key=lambda x:x[1], reverse=True)
     sorted_words_by_abc = sorted(word_freq.keys())
     
-    print_summary(word_count, len(word_freq), sorted_words_by_freq[3][0])
+    third_freq = sorted_words_by_freq[2][0] if len(sorted_words_by_freq) > 2 else "N/a. Not enough words"
+    print_summary(word_count, len(word_freq), third_freq)
+    
     
     print_psuedo_len_dict(sorted_words_by_abc)
 
@@ -107,7 +121,7 @@ def assemble_file_stats(filename):
 def main(): 
     
     # retrieves the command line arguments
-    filename, verbose = parse_arguments()
+    filename = parse_arguments()
     
     # reads the file, creates stats, outputs stats
     assemble_file_stats(filename)
