@@ -1,9 +1,10 @@
 '''
-CAEN Round 3 
+Jacque Thomas
+CAEN Interview Process February 2021
 Word Parser/Summary Exercise
 Requirements: 
     Python 3
-    Libraries: os, argparse, 
+    Libraries: os, argparse
     Arguments: FILENAME (position 1, name relative to cwd)
 Optional:
     Arguments: --freq (will optionally print the dictionary with values
@@ -57,6 +58,7 @@ def assert_file_exists(filename):
         print("Your current working directory: " + os.getcwd())
         quit()
 
+# Quits program if no words were found
 def assert_words(word_count, filename):
     if word_count == 0:
         print("No words found in " + filename)
@@ -108,6 +110,7 @@ def assemble_file_stats(filename, freq):
             for word in line.split():
                 word = word.strip(NONALPHA).lower()
                 
+                # remove tokens that were only symbols
                 if len(word) != 0:
                     word_count += 1
                     
