@@ -9,10 +9,13 @@ Requirements:
 Optional:
     Arguments: --freq (will optionally print the dictionary with values
                        of frequency, rather than word length)
+                       
+Inputs:
+    Text file with at least one word
 Outputs: 
-    Printed summary of data, as specified.
+    Printed summary of data, as specified
     Printed dictionary of (word, length) 
-                       or (word, frequency) if using the flag --freq]
+                       or (word, frequency) if using the flag --freq
 '''
 
 import os, argparse
