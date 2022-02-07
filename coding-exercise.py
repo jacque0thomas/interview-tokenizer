@@ -1,9 +1,14 @@
 '''
 CAEN Round 3 
-Python Project
+Word Parser and Summary Exercise
 Inputs:     CL file location of text file with words
-Outputs:    Summary information*; alphabetic dictionary*
-*See original specs for more detail, attached.
+Outputs:    Summary information*; alphabetic sorted dictionary*
+Requirements: Python 3
+    Libraries: os, argparse, 
+    Arguments: FILENAME (position 1, name relative to cwd)
+Optional:
+    Arguments: --freq (will optionally print the dictionary with values
+                       of frequency, rather than word length)S
 '''
 
 import os, argparse
@@ -25,12 +30,17 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     
     # file is required 
-    parser.add_argument(dest='filename', type=str, help="Name of the file to parse and summarize")
+    parser.add_argument(dest='filename', type=str, 
+                        help="Name of the file to parse and summarize")
+
+    parser.add_argument('--freq', default=False, action="store_true", 
+                        required=False, 
+                        help="Will optionally print the dictionary with values of frequency, rather than word length.")
 
     # retreive arguments
     args = parser.parse_args()
     
-    return args.filename
+    return args.filename, args.freq
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,17 +67,17 @@ def assert_words(word_count, filename):
 # A sorted dictionary is useless to python
 # but can be useful to users. 
 def print_psuedo_len_dict(sorted_list):
-    print("{")
+    print("lengths = {")
     for item in sorted_list:
         print("\t" + item + ": " + str(len(item)))
     print("}")
     
 # In the case that the "length" requested in the output dictionay is frequency,
 # this function will output the frequency dictionary 
-def print_dictionary(sorted_list, word_freq):
-    print("{")
+def print_freq_dict(sorted_list, word_freq):
+    print("frequencies = {")
     for item in sorted_list:
-        print("\t" + item + ": " + word_freq[item])
+        print("\t" + item + ": " + str(word_freq[item]))
     print("}")
 
 # Prints summary statistics according to specs
@@ -81,7 +91,7 @@ def print_summary(word_count, uniq_word_count, third_frequent):
 # ENGINES 
 
 # reads the file, creates stats, outputs stats
-def assemble_file_stats(filename):
+def assemble_file_stats(filename, freq):
     
     # basic error checking 
     assert_file_exists(filename)
@@ -110,21 +120,25 @@ def assemble_file_stats(filename):
     sorted_words_by_freq = sorted(word_freq.items(), key=lambda x:x[1], reverse=True)
     sorted_words_by_abc = sorted(word_freq.keys())
     
+    # Asserting that there are more than 2 words to print
     third_freq = sorted_words_by_freq[2][0] if len(sorted_words_by_freq) > 2 else "N/a. Not enough words"
+    
+    # Printing summary and required dictionary
     print_summary(word_count, len(word_freq), third_freq)
-    
-    
-    print_psuedo_len_dict(sorted_words_by_abc)
+    if freq:
+        print_freq_dict(sorted_words_by_abc, word_freq)
+    else:
+        print_psuedo_len_dict(sorted_words_by_abc)
 
 
 # main
 def main(): 
     
     # retrieves the command line arguments
-    filename = parse_arguments()
+    filename, freq = parse_arguments()
     
     # reads the file, creates stats, outputs stats
-    assemble_file_stats(filename)
+    assemble_file_stats(filename, freq)
 
 
 # stub for main
