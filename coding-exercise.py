@@ -1,14 +1,17 @@
 '''
 CAEN Round 3 
-Word Parser and Summary Exercise
-Inputs:     CL file location of text file with words
-Outputs:    Summary information*; alphabetic sorted dictionary*
-Requirements: Python 3
+Word Parser/Summary Exercise
+Requirements: 
+    Python 3
     Libraries: os, argparse, 
     Arguments: FILENAME (position 1, name relative to cwd)
 Optional:
     Arguments: --freq (will optionally print the dictionary with values
-                       of frequency, rather than word length)S
+                       of frequency, rather than word length)
+Outputs: 
+    Printed summary of data, as specified.
+    Printed dictionary of (word, length) 
+                       or (word, frequency) if using the flag --freq]
 '''
 
 import os, argparse
